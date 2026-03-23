@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="#style"?>
+<!DOCTYPE response [
+  <!ATTLIST xsl:stylesheet id ID #IMPLIED>
+]>
+<response>
+    <status_codes>500,501,502,503,504,505,506,507,508,509,510,511,599</status_codes>
+    
+    <message>the website or server is down</message>
+    
+    <content>
+        <line_1>kamu adalah orang idiot</line_1>
+        <line_2>you are a person</line_2>
+    </content>
+
+    <xsl:stylesheet id="style" version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:user="urn:my-scripts">
+        <xsl:template match="/">
+            <html>
+            <body style="font-family:monospace; white-space:pre; background:#fff;">
+                <xsl:text>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#10;</xsl:text>
+                <xsl:text>&lt;response&gt;&#10;</xsl:text>
+                <xsl:text>    &lt;status_code&gt;</xsl:text>
+                <script>
+                    var codes = [500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 599];
+                    document.write(codes[Math.floor(Math.random() * codes.length)]);
+                </script>
+                <xsl:text>&lt;/status_code&gt;&#10;</xsl:text>
+                <xsl:text>    &lt;message&gt;</xsl:text><xsl:value-of select="response/message"/><xsl:text>&lt;/message&gt;&#10;</xsl:text>
+                <xsl:text>    &lt;content&gt;&#10;</xsl:text>
+                <xsl:text>        &lt;line_1&gt;</xsl:text><xsl:value-of select="response/content/line_1"/><xsl:text>&lt;/line_1&gt;&#10;</xsl:text>
+                <xsl:text>        &lt;line_2&gt;</xsl:text><xsl:value-of select="response/content/line_2"/><xsl:text>&lt;/line_2&gt;&#10;</xsl:text>
+                <xsl:text>    &lt;/content&gt;&#10;</xsl:text>
+                <xsl:text>&lt;/response&gt;</xsl:text>
+            </body>
+            </html>
+        </xsl:template>
+    </xsl:stylesheet>
+</response>

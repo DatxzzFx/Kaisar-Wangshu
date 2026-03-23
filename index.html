@@ -1,38 +1,61 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="#style"?>
-<!DOCTYPE response [
-  <!ATTLIST xsl:stylesheet id ID #IMPLIED>
-]>
-<response>
-    <status_codes>500,501,502,503,504,505,506,507,508,509,510,511,599</status_codes>
-    
-    <message>the website or server is down</message>
-    
-    <content>
-        <line_1>kamu adalah orang idiot</line_1>
-        <line_2>you are a person</line_2>
-    </content>
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Maintenance</title>
+    <style>
+        body {
+            /* Warna latar belakang abu-abu muda sesuai gambar */
+            background-color: #f0f0f0; 
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Memastikan konten berada di tengah vertikal dan horizontal di layar penuh */
+            height: 100vh; 
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
 
-    <xsl:stylesheet id="style" version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:user="urn:my-scripts">
-        <xsl:template match="/">
-            <html>
-            <body style="font-family:monospace; white-space:pre; background:#fff;">
-                <xsl:text>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#10;</xsl:text>
-                <xsl:text>&lt;response&gt;&#10;</xsl:text>
-                <xsl:text>    &lt;status_code&gt;</xsl:text>
-                <script>
-                    var codes = [500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 599];
-                    document.write(codes[Math.floor(Math.random() * codes.length)]);
-                </script>
-                <xsl:text>&lt;/status_code&gt;&#10;</xsl:text>
-                <xsl:text>    &lt;message&gt;</xsl:text><xsl:value-of select="response/message"/><xsl:text>&lt;/message&gt;&#10;</xsl:text>
-                <xsl:text>    &lt;content&gt;&#10;</xsl:text>
-                <xsl:text>        &lt;line_1&gt;</xsl:text><xsl:value-of select="response/content/line_1"/><xsl:text>&lt;/line_1&gt;&#10;</xsl:text>
-                <xsl:text>        &lt;line_2&gt;</xsl:text><xsl:value-of select="response/content/line_2"/><xsl:text>&lt;/line_2&gt;&#10;</xsl:text>
-                <xsl:text>    &lt;/content&gt;&#10;</xsl:text>
-                <xsl:text>&lt;/response&gt;</xsl:text>
-            </body>
-            </html>
-        </xsl:template>
-    </xsl:stylesheet>
-</response>
+        .maintenance-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; /* Jarak antara ikon dan teks */
+        }
+
+        .warning-icon {
+            width: 150px; /* Ukuran ikon, bisa disesuaikan */
+            height: auto;
+        }
+
+        .message {
+            /* Warna teks cokelat tua/marun sesuai gambar */
+            color: #3e0b0b; 
+            font-size: 32px; /* Ukuran font besar */
+            font-weight: bold;
+            line-height: 1.2;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="maintenance-container">
+        <svg class="warning-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <path d="M256 48L32 464h448Z" fill="url(#grad1)"/>
+            <path d="M232 160h48v160h-48zM232 368h48v48h-48z" fill="#000000"/>
+        </svg>
+
+        <p class="message">Server Down<br>for Maintenance</p>
+    </div>
+
+</body>
+</html>
